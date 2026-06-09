@@ -32,9 +32,8 @@
                             <li><a href="index.php">Início</a></li>
                             <li><a href="perfil.php">Perfil</a></li>
                             <li><a href="disco.php">Discos</a></li>
+                            <li><a href="cd.php">CD's</a></li>
                             <li><a href="lotes.php">Lotes</a></li>
-                            <li><a href="vitrolas.php">vitrolas</a></li>
-                            <li><a href="leilao.php">Leilões</a></li>
                         </ul>
                     </nav>
                  </div>
