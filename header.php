@@ -12,7 +12,7 @@
             <div class="container1">
                 <div class="logo">
                     <a href="/" class="logo">
-                        <img src="img/retro2.png" alt="RetroMusic" style="height: 160px;">
+                        <img src="img/retro4.png" alt="RetroMusic" style="height: 160px;">
                     </a>
                     <form class="pesquisa">
                         <input type="text" placeholder="Pesquisar...">
