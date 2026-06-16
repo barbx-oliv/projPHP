@@ -1,0 +1,833 @@
+:root {
+    --vinho: #4A1521;
+    --ferrugem: #A34828;
+    --creme-claro: #FDFBF7;
+    --creme-escuro: #F4EFE6;
+    --texto-escuro: #2C2523;
+    --texto-suave: #6E6562;
+    --sucesso: #2E5A44;
+    --erro: #A32828;
+    --fonte-serifa: 'Playfair Display', Georgia, serif;
+    --fonte-sans: 'Inter', sans-serif;
+    --sombra: 0 4px 12px rgba(44, 37, 35, 0.08);
+    --borda-raio: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--creme-claro);
+    color: var(--texto-escuro);
+    font-family: var(--fonte-sans);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Topo do header */
+.site-header {
+    width: 100%;
+    background-color: var(--texto-escuro); /* Mudado para o tom escuro elegante do seu projeto */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Linha de Cima (Main) */
+.header-main {
+    padding: 0.5rem 0; /* Ajustado para abraçar a imagem perfeitamente */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil clara */
+}
+
+/* Bloco do Logo Oficial */
+.header-logo-block {
+    display: flex;
+    align-items: center;
+    height: 65px; /* Altura ideal para destacar bem os detalhes da vitrola */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.logo-oficial-img {
+    height: 100%; 
+    width: auto;   
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Destaca ainda mais o desenho */
+}
+
+/* Efeito sutil de aproximação ao passar o mouse na logo */
+.header-logo-block:hover .logo-oficial-img {
+    transform: scale(1.03);
+}
+
+/* Barra de Busca */
+.header-busca {
+    flex: 0 1 450px;
+    margin: 0 1.5rem;
+}
+
+.header-busca input {
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15); /* Input semi-transparente escuro */
+    font-family: var(--fonte-sans);
+    font-size: 0.9rem;
+    color: #fff; /* Texto digitado em branco */
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.header-busca input::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder legível no fundo escuro */
+}
+
+.header-busca input:focus {
+    border-color: var(--ferrugem);
+    background-color: #fff;
+    color: var(--texto-escuro);
+    box-shadow: 0 2px 6px rgba(163, 72, 40, 0.2);
+}
+
+/* Links de Autenticação / Sessão */
+.header-usuario {
+    font-family: var(--fonte-sans);
+    font-size: 0.9rem;
+    color: var(--creme-claro); /* Texto de login em tom creme claro */
+}
+
+.auth-btn {
+    font-weight: 500;
+}
+
+.auth-btn:hover {
+    color: var(--ferrugem);
+}
+
+.usuario-logado a {
+    color: #fff;
+}
+.usuario-logado a:hover {
+    color: var(--ferrugem);
+}
+
+.divisor {
+    margin: 0 0.4rem;
+    color: var(--texto-suave);
+    opacity: 0.5;
+}
+
+.logout {
+    color: #ff6b6b; /* Vermelho um pouco mais vivo para destacar no fundo escuro */
+}
+
+/* Linha de Baixo (Navegação) */
+.header-nav {
+    background-color: rgba(0, 0, 0, 0.15); /* Fundo ligeiramente mais escuro para a barra inferior */
+}
+
+.header-nav .header-container {
+    justify-content: flex-start;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 0.85rem 0;
+    font-family: var(--fonte-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(253, 251, 247, 0.8); /* Cor creme suave para os links */
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: #fff;
+}
+
+/* Linha indicadora de aba ativa ajustada para o modo escuro */
+.nav-links li a.ativo {
+    color: #fff;
+    font-weight: 700;
+}
+
+.nav-links li a.ativo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--ferrugem); /* Linha ferrugem destaca perfeitamente no fundo escuro */
+}
+
+/* Header */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(74, 21, 33, 0.85), rgba(44, 37, 35, 0.4));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    color: #fff;
+}
+
+.banner-overlay h1 {
+    font-family: var(--fonte-serifa);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.banner-overlay h1 em {
+    font-weight: 400;
+}
+
+.banner-overlay p {
+    font-size: 1.1rem;
+    max-width: 500px;
+    opacity: 0.9;
+}
+
+.secao-titulo {
+    font-family: var(--fonte-serifa);
+    text-align: center;
+    margin: 3rem 0 1.5rem;
+    font-size: 2rem;
+    color: var(--vinho);
+}
+
+/* Cards de Categorias */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.card-categoria {
+    background-color: var(--creme-escuro);
+    border-radius: var(--borda-raio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    text-align: center;
+    border: 1px solid rgba(110, 101, 98, 0.1);
+}
+
+.card-categoria img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card-categoria:hover img {
+    transform: scale(1.05);
+}
+
+.card-categoria p {
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--texto-escuro);
+}
+
+/* grid dos produtos e coiso de oferta */
+.secao-ofertas {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+}
+
+.oferta-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--creme-escuro);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.oferta-header h2 {
+    font-family: var(--fonte-serifa);
+    font-size: 2rem;
+    color: var(--vinho);
+}
+
+.tag-oferta {
+    background-color: var(--ferrugem);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.produto {
+    background-color: #fff;
+    border-radius: var(--borda-raio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(110, 101, 98, 0.08);
+}
+
+.produto img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.info_produto {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.info_produto h3 {
+    font-family: var(--fonte-serifa);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--texto-escuro);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.estadoCapa, .estadoDisco {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.precoA {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #A09692;
+    margin-top: 0.75rem;
+}
+
+.preco_container {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.preco {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ferrugem);
+}
+
+.desconto {
+    font-size: 0.85rem;
+    color: var(--sucesso);
+    font-weight: 600;
+}
+
+.parcela {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+    margin-bottom: 1.25rem;
+}
+
+.btn-comprar {
+    display: block;
+    text-align: center;
+    background-color: var(--vinho);
+    color: #fff;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: auto;
+}
+
+.btn-comprar:hover {
+    background-color: var(--ferrugem);
+}
+
+/* pagina listagem */
+.pagina-listagem {
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 0 2rem;
+}
+
+.listagem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--creme-escuro);
+    padding-bottom: 1rem;
+}
+
+.listagem-header h1 {
+    font-family: var(--fonte-serifa);
+    font-size: 2.2rem;
+    color: var(--vinho);
+}
+
+.filtros {
+    display: flex;
+    gap: 1rem;
+}
+
+.filtro-select {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(110, 101, 98, 0.2);
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: var(--fonte-sans);
+    color: var(--texto-escuro);
+    outline: none;
+    cursor: pointer;
+}
+
+.filtro-select:focus {
+    border-color: var(--ferrugem);
+}
+
+/* Perfil */
+.pagina-perfil {
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 0 2rem;
+}
+
+.perfil-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* Sidebar do Perfil */
+.perfil-card {
+    background-color: #fff;
+    border-radius: var(--borda-raio);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--sombra);
+    text-align: center;
+    border: 1px solid rgba(110, 101, 98, 0.08);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--vinho);
+    color: #fff;
+    font-family: var(--fonte-serifa);
+    font-size: 2.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.perfil-card h2 {
+    font-family: var(--fonte-serifa);
+    font-size: 1.35rem;
+    color: var(--texto-escuro);
+    margin-bottom: 0.25rem;
+}
+
+.perfil-card .email {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin-bottom: 1.5rem;
+}
+
+.perfil-stats {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--creme-escuro);
+    border-bottom: 1px solid var(--creme-escuro);
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.stat-num {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ferrugem);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+}
+
+/* Menu Lateral do Perfil */
+.perfil-menu {
+    list-style: none;
+    text-align: left;
+}
+
+.perfil-menu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--texto-escuro);
+    margin-bottom: 0.25rem;
+}
+
+.perfil-menu li a:hover,
+.perfil-menu li a.ativo {
+    background-color: var(--creme-escuro);
+    color: var(--vinho);
+    padding-left: 1.25rem;
+}
+
+/* Painel de Conteúdo */
+.perfil-conteudo {
+    background-color: #fff;
+    border-radius: var(--borda-raio);
+    padding: 2.5rem;
+    box-shadow: var(--sombra);
+    border: 1px solid rgba(110, 101, 98, 0.08);
+}
+
+.painel-box h3 {
+    font-family: var(--fonte-serifa);
+    font-size: 1.6rem;
+    color: var(--vinho);
+    margin-bottom: 1.5rem;
+}
+
+/* Tabelas no Perfil */
+.tabela-produtos {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-produtos th {
+    background-color: var(--creme-escuro);
+    padding: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    letter-spacing: 0.5px;
+}
+
+.tabela-produtos td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--creme-escuro);
+    font-size: 0.95rem;
+}
+
+/* Badges de Status */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badge-ativo {
+    background-color: rgba(46, 90, 68, 0.1);
+    color: var(--sucesso);
+}
+
+.badge-pausado {
+    background-color: rgba(110, 101, 98, 0.1);
+    color: var(--texto-suave);
+}
+
+/* Formulários do Perfil e Geral */
+.campo {
+    margin-bottom: 1.25rem;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--texto-escuro);
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo input[type="number"],
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(110, 101, 98, 0.2);
+    border-radius: 4px;
+    font-family: var(--fonte-sans);
+    color: var(--texto-escuro);
+    outline: none;
+    background-color: #fff;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+    border-color: var(--ferrugem);
+}
+
+.btn-principal {
+    display: inline-block;
+    background-color: var(--vinho);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--fonte-sans);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-principal:hover {
+    background-color: var(--ferrugem);
+}
+
+/* Mensagens de feedback */
+.mensagem {
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.mensagem.sucesso {
+    background-color: rgba(46, 90, 68, 0.1);
+    color: var(--sucesso);
+    border: 1px solid rgba(46, 90, 68, 0.2);
+}
+
+.mensagem.erro {
+    background-color: rgba(163, 40, 40, 0.1);
+    color: var(--erro);
+    border: 1px solid rgba(163, 40, 40, 0.2);
+}
+
+/* Login e cadastro */
+.pagina-auth {
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: 100vh;
+    background-color: var(--creme-claro);
+}
+
+.auth-form-lado {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 10%;
+    background-color: var(--creme-claro);
+}
+
+.auth-logo img {
+    height: 45px;
+    margin-bottom: 2rem;
+}
+
+.auth-box {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.auth-box h2 {
+    font-family: var(--fonte-serifa);
+    color: var(--vinho);
+    font-size: 2.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.subtitulo {
+    color: var(--texto-suave);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.auth-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+.auth-link a {
+    color: var(--ferrugem);
+    font-weight: 600;
+}
+
+.auth-imagem-lado {
+    flex: 1.2;
+    position: relative;
+    background-color: var(--vinho);
+}
+
+.auth-imagem-lado img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+/* =========================================================================
+   8. NOVO FOOTER CUSTOMIZADO (RETROMUSIC MODO ESCURO)
+   ========================================================================= */
+.site-footer {
+    width: 100%;
+    background-color: var(--texto-escuro); /* Mesmo fundo escuro do cabeçalho */
+    color: rgba(253, 251, 247, 0.8);      /* Texto em tom creme suave para leitura */
+    font-family: var(--fonte-sans);
+    padding-top: 3.5rem;
+    margin-top: auto; /* Garante o footer na parte inferior se a página for curta */
+    border-top: 3px solid var(--ferrugem); /* Linha ferrugem sutil no topo do footer */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+}
+
+.footer-coluna {
+    flex: 1 1 220px; /* Colunas responsivas */
+}
+
+/* Ajuste da Logo no Footer */
+.footer-sobre {
+    flex: 1 2 350px; /* Dá um pouco mais de espaço para a coluna da logo */
+}
+
+.footer-logo-block {
+    display: inline-block;
+    height: 65px; /* Mesma altura utilizada no cabeçalho */
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+}
+
+.footer-logo-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Destaca os detalhes claros */
+}
+
+.footer-sobre p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(253, 251, 247, 0.65);
+    max-width: 320px;
+}
+
+/* Estilização das Listas do Rodapé */
+.footer-coluna h3 {
+    font-family: var(--fonte-serifa);
+    font-size: 1.25rem;
+    color: #fff; /* Título em branco puro */
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.footer-links, .footer-contatos {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links li a {
+    font-size: 0.95rem;
+    color: rgba(253, 251, 247, 0.75);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+/* Efeito dinâmico ao passar o mouse nos links */
+.footer-links li a:hover {
+    color: #fff;
+    padding-left: 4px;
+}
+
+/* Linha de Direitos Autorais Inferior */
+.footer-bottom {
+    margin-top: 3.5rem;
+    padding: 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.2); /* Tom ligeiramente mais escuro */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(253, 251, 247, 0.5);
+}
+
+.footer-bottom .footer-container {
+    justify-content: center;
+}

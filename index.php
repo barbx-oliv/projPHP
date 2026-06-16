@@ -1,9 +1,8 @@
 <?php
 session_start();
-require_once 'BD/BD.php';
+require_once 'BD/BD.php'; // conexão com o banco de dados
 
-try {
-    // Código limpo: o campo 'tipo' foi removido de ambas as consultas do UNION
+try { // Se o banco funcionar corretamente, ele vai carregar os produtos com base nas tabelas do BD
     $ofertas = $pdo->query("
         SELECT id, nome, imagem, preco, estado_capa, estado_disco AS estado_midia, 10 AS desconto_percent, created_at 
         FROM discos
@@ -20,7 +19,7 @@ try {
     ")->fetchAll(PDO::FETCH_ASSOC);
     
 } catch (PDOException $e) {
-    // Caso dê algum erro no banco, criamos uma lista vazia para exibir os produtos de exemplo em vez de travar a tela
+    // Caso dê algum erro no BD, cria uma lista vazia para exibir os produtos de exemplo em vez de travar a tela
     $ofertas = []; 
 }
 ?>
@@ -39,27 +38,27 @@ try {
     <div class="banner">
         <img src="img/vitrine_discos.jpg" alt="Vitrine de discos">
         <div class="banner-overlay">
-            <h1>Sua coleção<br><em>começa aqui.</em></h1>
-            <p>Vinil, CDs e lotes raros — compre e venda com quem entende de música.</p>
+            <h1>Sua coleção<br><em>começa aqui!</em></h1>
+            <p>Vinil, CDs e lotes raros — compre e venda com quem entende de música ♡</p>
         </div>
     </div>
 
-    <h2 class="secao-titulo">Navegue por categoria</h2>
+    <h2 class="secao-titulo">Categorias</h2>
     <div class="cards">
         <a href="disco.php" class="card-categoria">
-            <img src="img/categoria_disco.jpg" alt="Discos de Vinil">
+            <img src="img/discos_index.jpg" alt="Discos de Vinil">
             <p>Discos de Vinil</p>
         </a>
         <a href="cd.php" class="card-categoria">
-            <img src="img/categoria_cd.jpg" alt="CDs">
+            <img src="img/cds_index.jpg" alt="CDs">
             <p>CD's</p>
         </a>
         <a href="lotes.php" class="card-categoria">
-            <img src="img/categoria_lote.jpg" alt="Lotes">
+            <img src="img/lotes_index.jpg" alt="Lotes">
             <p>Lotes</p>
         </a>
         <a href="perfil.php" class="card-categoria">
-            <img src="img/categoria_perfil.jpg" alt="Meu Perfil">
+            <img src="img/perfil_index.jpg" alt="Meu Perfil">
             <p>Meu Perfil</p>
         </a>
     </div>
@@ -103,11 +102,17 @@ try {
                     </div>
                 </article>
             <?php else: ?>
-                <?php foreach ($ofertas as $p):
+                <?php foreach ($ofertas as $p): 
+                // vê produto por produtor que veio do BD e gera o card de forma autpmatica.
+                // por exemplo, se tiver 2 produtos, desenha 2 cards. 8 produtos, 8 cards... Assim por diante
+                // dessa forma não precisa escrever o html de cada card
                     $preco_com_desc = $p['preco'] * (1 - $p['desconto_percent'] / 100);
+                    // aqui o PHP vai fazer um cálculo de matemática para pega o preço do BD e calcular o desconto de 10% em tempo real.
+                    // defeito - coloca desconto em todos os produtos em vez do usuário decidir. Preciso ajeitar dps
                 ?>
                 <article class="produto">
                     <img src="<?= htmlspecialchars($p['imagem']) ?>" alt="<?= htmlspecialchars($p['nome']) ?>">
+                    <!-- limpa os textos vindos do BD, impedindo ataques de injeção de scripts maliciosos no navegador do cliente -->
                     <div class="info_produto">
                         <h3><?= htmlspecialchars($p['nome']) ?></h3>
                         <span class="estadoCapa">Capa: <?= htmlspecialchars($p['estado_capa']) ?></span>
@@ -117,6 +122,7 @@ try {
                         <p class="precoA">R$ <?= number_format($p['preco'], 2, ',', '.') ?></p>
                         <div class="preco_container">
                             <span class="preco">R$ <?= number_format($preco_com_desc, 2, ',', '.') ?></span>
+                            <!-- Formata os números do valor do produto para reais -->
                             <span class="desconto"><?= $p['desconto_percent'] ?>% OFF</span>
                         </div>
                         <p class="parcela">12x de R$ <?= number_format($preco_com_desc / 12, 2, ',', '.') ?></p>

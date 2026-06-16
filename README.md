@@ -5,13 +5,42 @@
 
 ---
 
-## 1. Introdução
+## 1. Como testar o código 
+Para rodar e testar localmente, siga o passo a passo abaixo.
+
+### 1.2 Pré-requisitos 
+**PHP 8.x** ou superior
+Um gerenciador de Banco de Dados (**MySQL/MariaDB** ou **PostgreSQL**)
+* Um cliente Git (opcional, para clonar) ou o arquivo `.zip` do projeto.
+
+### 1.3 Baixar o projeto 
+
+### 1.4 Criando o Banco de Dados (BD)
+Se você estiver usando o **PostgreSQL**:
+- Crie o banco de dados
+createdb -U postgres retromusic
+
+- Importe a estrutura e os dados iniciais do arquivo SQL
+psql -U postgres -d retromusic -f sql/retromusic.sql
+
+Agora se você estiver pelo **MySQL**
+- Acesse o terminal do seu MySQL
+mysql -u root -p
+
+- Dentro do prompt do MySQL, crie o banco e importe o arquivo:
+CREATE DATABASE retromusic;
+USE retromusic;
+SOURCE sql/retromusic.sql;
+EXIT;
+
+
+## 2. Introdução
 
 O projeto **RetroMusic** é um marketplace online para compra e venda de discos de vinil, CDs e lotes. Qualquer usuário cadastrado pode anunciar seus produtos, e compradores podem navegar pelo catálogo, filtrar por gênero e visualizar detalhes de cada item.
 
 O sistema utiliza **PHP** para a interface de usuário e lógica de controle, **MySQL** como banco de dados relacional e **CSS** puro para o estilo visual.
 
-### 1.2 Escopo
+### 2.2 Escopo
 
 O sistema permitirá:
 
@@ -33,7 +62,7 @@ O sistema utilizará:
 
 ---
 
-### 1.3 Definições
+### 2.3 Definições
 
 | Termo | Definição |
 | ----- | --------- |
@@ -47,9 +76,9 @@ O sistema utilizará:
 
 ---
 
-## 2. Descrição Geral do Sistema
+## 3. Descrição Geral do Sistema
 
-### 2.1 Funções do Sistema
+### 3.1 Funções do Sistema
 
 O sistema deve:
 
@@ -60,7 +89,7 @@ O sistema deve:
 * Filtrar produtos por gênero e ordenar por preço ou data
 * Exibir painel do usuário com seus anúncios e status
 
-### 2.2 Estrutura de Arquivos
+### 3.2 Estrutura de Arquivos
 
 ```
 retromusic/
@@ -90,9 +119,9 @@ retromusic/
 
 ---
 
-## 3. Requisitos do Sistema
+## 4. Requisitos do Sistema
 
-### 3.1 Requisitos Funcionais
+### 4.1 Requisitos Funcionais
 
 #### RF-001: Cadastro de Usuário
 
@@ -204,7 +233,7 @@ retromusic/
 
 ---
 
-## 4. Regras de Negócio
+## 5. Regras de Negócio
 
 | Regra | Descrição |
 | ----- | --------- |
@@ -218,7 +247,7 @@ retromusic/
 
 ---
 
-## 5. Banco de Dados
+## 6. Banco de Dados
 
 ### Diagrama de tabelas
 
@@ -249,7 +278,7 @@ Edite as credenciais em `config/db.php` antes de rodar o projeto.
 
 ---
 
-## 6. Como Rodar o Projeto
+## 7. Como Rodar o Projeto
 
 **Requisitos:** PHP 8.x, MySQL 8 ou MariaDB 10.x, servidor Apache/Nginx (ou `php -S localhost:8000`).
 

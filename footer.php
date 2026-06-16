@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RetroMusic</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="footer">
-        <img src="img/retro4.png" alt="RetroMusic" style="height: 170px;">
-        <p>© 2026 - RetroMusic todos os direitos reservados.</p>
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Coluna 1: Logo Oficial e Sobre -->
+        <div class="footer-coluna footer-sobre">
+            <a href="index.php" class="footer-logo-block">
+                <img src="img/retroicon.png" alt="RetroMusic Logo" class="footer-logo-img">
+            </a>
+        </div>
+
+        <!-- Coluna 2: Links Rápidos de Navegação -->
+        <div class="footer-coluna">
+            <h3>Navegação</h3>
+            <ul class="footer-links">
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="discos.php">Discos</a></li>
+                <li><a href="lotes.php">CD's</a></li>
+                <li><a href="vitrolas.php">Lotes</a></li>
+                <li><a href="leilao.php">Perfil</a></li>
+            </ul>
+        </div>
+
+    <!-- Linha Inferior de Direitos Autorais -->
+    <div class="footer-bottom">
+        <div class="footer-container">
+            <p>&copy; <?= date('Y') ?> RetroMusic - Todos os direitos reservados.</p>
+        </div>
     </div>
-</body>
-</html>
+</footer>

@@ -18,10 +18,10 @@ $sql .= match($ordem) {
     default      => " ORDER BY created_at DESC",
 };
 
-// CORRIGIDO: Adicionado FETCH_ASSOC para garantir a leitura correta das colunas pelo PHP
+// FETCH_ASSOC para garantir a leitura correta das colunas pelo PHP
 $produtos = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-// CORRIGIDO: Puxando a lista de filtros de gêneros diretamente da tabela real de 'cds'
+// lista de filtros de gêneros diretamente da tabela real de 'cds'
 $generos  = $pdo->query("SELECT DISTINCT genero FROM cds WHERE genero IS NOT NULL ORDER BY genero")->fetchAll(PDO::FETCH_COLUMN);
 ?>
 <!DOCTYPE html>

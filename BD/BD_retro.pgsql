@@ -174,3 +174,11 @@ INSERT INTO lotedisco_itens (lotedisco_id, discos_id) VALUES
 (1, 3);
 
 SELECT * FROM usuarios;
+
+-- Atualiza o contador da tabela de discos para o próximo número livre real
+SELECT setval(pg_get_serial_sequence('discos', 'id'), COALESCE(MAX(id), 0) + 1, false) FROM discos;
+
+-- Atualiza a tabela de CDs (mesma coisa do de cima)
+SELECT setval(pg_get_serial_sequence('cds', 'id'), COALESCE(MAX(id), 0) + 1, false) FROM cds;
+-- MAX(id) - busca o  maior número de id atualmente gravado na tabela.
+-- COALESCE(MAX(id), 0) - se a tabela estiver vazia o sistema usa o número 0.
