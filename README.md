@@ -10,21 +10,28 @@ Para rodar e testar localmente, siga o passo a passo abaixo.
 
 ### 1.2 Pré-requisitos 
 **PHP 8.x** ou superior
-Um gerenciador de Banco de Dados (**MySQL/MariaDB** ou **PostgreSQL**)
-* Um cliente Git (opcional, para clonar) ou o arquivo `.zip` do projeto.
+Um gerenciador de Banco de Dados (**MySQL** ou **PostgreSQL**)
+* Um cliente Git (para clonar) ou o arquivo `.zip` do projeto.
 
-### 1.3 Baixar o projeto 
+### 1.3 Clonar o repositório
+Abra o seu terminal e digite
+```
+git clone https://github.com/barbx-oliv/projPHP
+```
 
-### 1.4 Criando o Banco de Dados (BD)
+### 1.4 Criando o Banco de Dados
 Se você estiver usando o **PostgreSQL**:
-- Crie o banco de dados
-createdb -U postgres retromusic
+```
+Para criar o banco de dados
+createdb -U postgres retro
 
-- Importe a estrutura e os dados iniciais do arquivo SQL
-psql -U postgres -d retromusic -f sql/retromusic.sql
+Importe a estrutura e os dados iniciais do arquivo SQL
+psql -U (seu usuário do postgres) -d retro -f retro.sql
+```
 
 Agora se você estiver pelo **MySQL**
-- Acesse o terminal do seu MySQL
+```
+Acesse o terminal do seu MySQL
 mysql -u root -p
 
 - Dentro do prompt do MySQL, crie o banco e importe o arquivo:
@@ -32,6 +39,19 @@ CREATE DATABASE retromusic;
 USE retromusic;
 SOURCE sql/retromusic.sql;
 EXIT;
+```
+ Inicie o servidor pelo PHP -
+php -S localhost:8000
+
+### 1.5 Conexão com o Banco de Dados
+Dentro dos arquivos você irá procurar por BD.php
+Nele você irá alterar as credenciais com base no seu perfil 
+```
+$host = 'localhost';
+$db = 'retro';
+$user = 'seu_usuario';
+$pass = 'sua_senha';
+```
 
 
 ## 2. Introdução
@@ -54,11 +74,10 @@ O sistema permitirá:
 
 O sistema utilizará:
 
-* PHP 8.x
-* HTML5 + CSS3
-* JavaScript (vanilla, para filtros)
-* PostgreSQL 14+
-* Arquitetura sem framework (MVC manual simples)
+* PHP 
+* HTML
+* CSS
+* PostgreSQL 
 
 ---
 
@@ -66,9 +85,9 @@ O sistema utilizará:
 
 | Termo | Definição |
 | ----- | --------- |
-| Vinil | Disco de vinil analógico de 7", 10" ou 12" |
-| CD | Compact Disc digital |
-| Lote | Pacote com dois ou mais itens (vinil, CD ou misto) vendidos juntos |
+| Vinil | Disco de vinil  |
+| CD | CD's e DvD|
+| Lote | Pacote com dois ou mais itens (vinil e CD) vendidos juntos |
 | Anúncio | Produto cadastrado por um vendedor e exibido no catálogo |
 | Estado (Capa/Mídia) | Grau de conservação segundo escala Goldmine: Mint, Near Mint, VG+, VG, G, F |
 | Ativo | Produto visível no catálogo para compradores |
@@ -94,27 +113,27 @@ O sistema deve:
 ```
 retromusic/
 ├── config/
-│   └── db.php            ← Conexão PDO com o banco
+│   └── db.php             Conexão PDO com o banco
 ├── css/
-│   └── style.css         ← Estilos completos
-├── img/                  ← Imagens do sistema e uploads
+│   └── style.css          Estilos completos
+├── img/                   Imagens do sistema e uploads
 ├── includes/
-│   └── form_produto.php  ← Formulário de anúncio (reutilizável)
+│   └── form_produto.php   Formulário de anúncio (reutilizável)
 ├── sql/
-│   └── retromusic.sql    ← Script de criação do banco
-├── uploads/              ← Imagens enviadas pelos usuários
+│   └── retromusic.sql     Script de criação do banco
+├── uploads/               Imagens enviadas pelos usuários
 ├── header.php
 ├── footer.php
-├── index.php             ← Página inicial com ofertas
+├── index.php              Página inicial com ofertas
 ├── login.php
 ├── cadastro.php
 ├── logout.php
-├── disco.php             ← Listagem de discos de vinil
-├── cd.php                ← Listagem de CDs
-├── lotes.php             ← Listagem de lotes
-├── perfil.php            ← Painel do usuário
-├── produto.php           ← Detalhe de produto (a criar)
-└── editar_produto.php    ← Edição de anúncio (a criar)
+├── disco.php              Listagem de discos de vinil
+├── cd.php                 Listagem de CDs
+├── lotes.php              Listagem de lotes
+├── perfil.php             Painel do usuário
+├── produto.php            Detalhe de produto (a criar)
+└── editar_produto.php     Edição de anúncio (a criar)
 ```
 
 ---
@@ -130,11 +149,10 @@ retromusic/
 **Rastreabilidade:** Necessidade do Stakeholder 01
 
 **Critérios de Aceitação:**
-- [x] Campos: Nome completo, e-mail, senha, confirmação de senha
-- [x] Validação de e-mail (formato e duplicidade)
-- [x] Senha com mínimo de 6 caracteres
-- [x] Senha armazenada com hash bcrypt
-- [x] Notificação de sucesso ou erro ao usuário
+- [ ] Campos: Nome completo, e-mail, senha, confirmação de senha
+- [ ] Validação de e-mail
+- [ ] Senha com mínimo de 6 caracteres
+- [ ] Notificação de sucesso ou erro ao usuário
 
 ---
 
@@ -145,11 +163,11 @@ retromusic/
 **Rastreabilidade:** Necessidade do Stakeholder 01
 
 **Critérios de Aceitação:**
-- [x] Campos: E-mail e senha
-- [x] Verificação com password_verify (bcrypt)
-- [x] Sessão PHP iniciada após login
-- [x] Redirecionamento para index após login
-- [x] Mensagem de erro para credenciais inválidas
+- [ ] Campos: E-mail e senha
+- [ ] Verificação com password_verify 
+- [ ] Sessão PHP iniciada após login
+- [ ] Redirecionamento para index após login
+- [ ] Mensagem de erro para credenciais inválidas
 
 ---
 
@@ -160,11 +178,11 @@ retromusic/
 **Rastreabilidade:** Necessidade do Stakeholder 02
 
 **Critérios de Aceitação:**
-- [x] Campos: Nome do álbum, artista, tipo (vinil/CD), gênero, ano, preço, desconto, estado da capa, estado da mídia, descrição, imagem
-- [x] Validação de todos os campos obrigatórios
-- [x] Upload de imagem com validação de extensão e tamanho (máx. 3 MB)
-- [x] Verificação de autenticação antes de exibir formulário
-- [x] Notificação de sucesso ao usuário
+- [ ] Campos: Nome do álbum, artista, tipo (vinil/CD), gênero, ano, preço, desconto, estado da capa, estado da mídia, descrição, imagem
+- [ ] Validação de todos os campos obrigatórios
+- [ ] Upload de imagem com validação de extensão e tamanho (máx. 3 MB)
+- [ ] Verificação de autenticação antes de exibir formulário
+- [ ] Notificação de sucesso ao usuário
 
 ---
 
@@ -175,10 +193,10 @@ retromusic/
 **Rastreabilidade:** Necessidade do Stakeholder 02
 
 **Critérios de Aceitação:**
-- [x] Exibe apenas produtos ativos e não vendidos
-- [x] Filtro por gênero musical
-- [x] Ordenação por data, menor preço e maior preço
-- [x] Cards com imagem, nome, estado, preço e desconto
+- [ ] Exibe apenas produtos ativos e não vendidos
+- [ ] Filtro por gênero musical
+- [ ] Ordenação por data, menor preço e maior preço
+- [ ] Cards com imagem, nome, estado, preço e desconto
 
 ---
 
@@ -202,8 +220,8 @@ retromusic/
 **Prioridade:** Alta — **Versão:** 1.0 — **Data:** 2026-05-28
 
 **Critérios de Aceitação:**
-- [x] Listagem de todos os anúncios do usuário com status
-- [x] Link para edição de cada produto
+- [] Listagem de todos os anúncios do usuário com status
+- [] Link para edição de cada produto
 - [ ] Ação para pausar/reativar anúncio
 - [ ] Ação para marcar como vendido
 
@@ -244,60 +262,3 @@ retromusic/
 | RN-005 | O estado de capa e de mídia seguem a escala Goldmine padrão do mercado |
 | RN-006 | Um produto marcado como vendido é removido automaticamente do catálogo |
 | RN-007 | O e-mail é único por usuário — não é possível cadastrar dois usuários com o mesmo e-mail |
-
----
-
-## 6. Banco de Dados
-
-### Diagrama de tabelas
-
-```
-usuarios (id, nome, email, senha, created_at, updated_at)
-    │
-    ├── produtos (id, usuario_id→, nome, artista, tipo, genero, ano,
-    │             preco, desconto_percent, estado_capa, estado_midia,
-    │             descricao, imagem, ativo, vendido, created_at, updated_at)
-    │
-    └── lotes (id, usuario_id→, titulo, descricao, tipo_midia,
-               preco, ativo, vendido, created_at, updated_at)
-                   │
-                   └── lote_itens (id, lote_id→, produto_id→)
-```
-
-### Como criar o banco
-
-```bash
-# Cria o banco (só na primeira vez)
-createdb -U postgres retromusic
-
-# Executa o script
-psql -U postgres -d retromusic -f sql/retromusic.sql
-```
-
-Edite as credenciais em `config/db.php` antes de rodar o projeto.
-
----
-
-## 7. Como Rodar o Projeto
-
-**Requisitos:** PHP 8.x, MySQL 8 ou MariaDB 10.x, servidor Apache/Nginx (ou `php -S localhost:8000`).
-
-```bash
-# 1. Clone o projeto na pasta do servidor web
-cp -r retromusic/ /var/www/html/
-
-# 2. Crie o banco e execute o schema
-createdb -U postgres retromusic
-psql -U postgres -d retromusic -f sql/retromusic.sql
-
-# 3. Ajuste as credenciais
-nano config/db.php
-
-# 4. Crie a pasta de uploads com permissão de escrita
-mkdir -p uploads && chmod 755 uploads
-
-# 5. Acesse no navegador
-http://localhost/retromusic/
-```
-
-**Usuário de teste:** `admin@retromusic.com` / senha: `123456`
