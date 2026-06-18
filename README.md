@@ -5,33 +5,53 @@
 
 ---
 
-## 1. Como rodar o código 
+## 1. Como testar o código 
 Para rodar e testar localmente, siga o passo a passo abaixo.
 
 ### 1.2 Pré-requisitos 
 **PHP 8.x** ou superior
-Um gerenciador de Banco de Dados (**MySQL/MariaDB** ou **PostgreSQL**)
-* Um cliente Git (opcional, para clonar) ou o arquivo `.zip` do projeto.
+Um gerenciador de Banco de Dados (**MySQL** ou **PostgreSQL**)
+* Um cliente Git (para clonar) ou o arquivo `.zip` do projeto.
 
-### 1.3 Baixar o projeto 
+### 1.3 Clonar o repositório
+Abra o seu terminal e digite
+```
+git clone https://github.com/barbx-oliv/projPHP
+```
 
-### 1.4 Criando o Banco de Dados (BD)
+### 1.4 Criando o Banco de Dados
 Se você estiver usando o **PostgreSQL**:
-- Crie o banco de dados
-createdb -U postgres retromusic
+```
+Para criar o banco de dados
+createdb -U postgres retro
 
-- Importe a estrutura e os dados iniciais do arquivo SQL
-psql -U postgres -d retromusic -f sql/retromusic.sql
+Importe a estrutura e os dados iniciais do arquivo SQL
+psql -U (seu usuário do postgres) -d retro -f retro.sql
+```
 
 Agora se você estiver pelo **MySQL**
-- Acesse o terminal do seu MySQL
+```
+Acesse o terminal do seu MySQL
 mysql -u root -p
 
-Dentro do prompt do MySQL, execute os comandos:
+- Dentro do prompt do MySQL, crie o banco e importe o arquivo:
 CREATE DATABASE retromusic;
 USE retromusic;
 SOURCE sql/retromusic.sql;
 EXIT;
+```
+ Inicie o servidor pelo PHP -
+php -S localhost:8000
+
+### 1.5 Conexão com o Banco de Dados
+Dentro dos arquivos você irá procurar por BD.php
+Nele você irá alterar as credenciais com base no seu perfil 
+```
+$host = 'localhost';
+$db = 'retro';
+$user = 'seu_usuario';
+$pass = 'sua_senha';
+```
 
 
 ## 2. Introdução
@@ -98,7 +118,7 @@ retromusic/
 │   └── style.css          Estilos completos
 ├── img/                   Imagens do sistema e uploads
 ├── includes/
-│   └── form_produto.php  ← Formulário de anúncio (reutilizável)
+│   └── form_produto.php   Formulário de anúncio (reutilizável)
 ├── sql/
 │   └── retromusic.sql     Script de criação do banco
 ├── uploads/               Imagens enviadas pelos usuários
@@ -108,12 +128,12 @@ retromusic/
 ├── login.php
 ├── cadastro.php
 ├── logout.php
-├── disco.php             ← Listagem de discos de vinil
-├── cd.php                ← Listagem de CDs
-├── lotes.php             ← Listagem de lotes
-├── perfil.php            ← Painel do usuário
-├── produto.php           ← Detalhe de produto (a criar)
-└── editar_produto.php    ← Edição de anúncio (a criar)
+├── disco.php              Listagem de discos de vinil
+├── cd.php                 Listagem de CDs
+├── lotes.php              Listagem de lotes
+├── perfil.php             Painel do usuário
+├── produto.php            Detalhe de produto (a criar)
+└── editar_produto.php     Edição de anúncio (a criar)
 ```
 
 ---
@@ -242,60 +262,3 @@ retromusic/
 | RN-005 | O estado de capa e de mídia seguem a escala Goldmine padrão do mercado |
 | RN-006 | Um produto marcado como vendido é removido automaticamente do catálogo |
 | RN-007 | O e-mail é único por usuário — não é possível cadastrar dois usuários com o mesmo e-mail |
-
----
-
-## 6. Banco de Dados
-
-### Diagrama de tabelas
-
-```
-usuarios (id, nome, email, senha, created_at, updated_at)
-    │
-    ├── produtos (id, usuario_id→, nome, artista, tipo, genero, ano,
-    │             preco, desconto_percent, estado_capa, estado_midia,
-    │             descricao, imagem, ativo, vendido, created_at, updated_at)
-    │
-    └── lotes (id, usuario_id→, titulo, descricao, tipo_midia,
-               preco, ativo, vendido, created_at, updated_at)
-                   │
-                   └── lote_itens (id, lote_id→, produto_id→)
-```
-
-### Como criar o banco
-
-```bash
-# Cria o banco (só na primeira vez)
-createdb -U postgres retromusic
-
-# Executa o script
-psql -U postgres -d retromusic -f sql/retromusic.sql
-```
-
-Edite as credenciais em `config/db.php` antes de rodar o projeto.
-
----
-
-## 7. Como Rodar o Projeto
-
-**Requisitos:** PHP 8.x, MySQL 8 ou MariaDB 10.x, servidor Apache/Nginx (ou `php -S localhost:8000`).
-
-```bash
-# 1. Clone o projeto na pasta do servidor web
-cp -r retromusic/ /var/www/html/
-
-# 2. Crie o banco e execute o schema
-createdb -U postgres retromusic
-psql -U postgres -d retromusic -f sql/retromusic.sql
-
-# 3. Ajuste as credenciais
-nano config/db.php
-
-# 4. Crie a pasta de uploads com permissão de escrita
-mkdir -p uploads && chmod 755 uploads
-
-# 5. Acesse no navegador
-http://localhost/retromusic/
-```
-
-**Usuário de teste:** `admin@retromusic.com` / senha: `123456`
