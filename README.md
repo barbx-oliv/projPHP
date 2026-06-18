@@ -112,22 +112,20 @@ O sistema deve:
 
 ```
 retromusic/
-├── config/
-│   └── db.php             Conexão PDO com o banco
+├── BD/
+│   └── BD.php             Conexão PDO com o banco
+|   └── BD_retro.pgsql     Criação do banco
 ├── css/
 │   └── style.css          Estilos completos
 ├── img/                   Imagens do sistema e uploads
 ├── includes/
 │   └── form_produto.php   Formulário de anúncio (reutilizável)
-├── sql/
-│   └── retromusic.sql     Script de criação do banco
-├── uploads/               Imagens enviadas pelos usuários
 ├── header.php
 ├── footer.php
 ├── index.php              Página inicial com ofertas
-├── login.php
-├── cadastro.php
-├── logout.php
+├── login.php              Login do usuário 
+├── cadastro.php           Cadastro do usuário
+├── logout.php             Logout do usuário (não está em funcionamento)
 ├── disco.php              Listagem de discos de vinil
 ├── cd.php                 Listagem de CDs
 ├── lotes.php              Listagem de lotes
