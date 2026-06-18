@@ -43,7 +43,7 @@ $pagina_atual = basename($_SERVER['PHP_SELF']);
                 <!-- Se a pagina atual foi igual ao arquivo, vai escrever que esta ativo -->
                 <!-- Se não, vai escrever nada -->
                 <li><a href="index.php" <?= $pagina_atual === 'index.php' ? 'class="ativo"' : '' ?>>Inicio</a></li>
-                <li><a href="discos.php" <?= $pagina_atual === 'discos.php' || $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Discos</a></li>
+                <li><a href="disco.php" <?= $pagina_atual === 'disco.php' || $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Discos</a></li>
                 <li><a href="cd.php" <?= $pagina_atual === 'cd.php' ? 'class="ativo"' : '' ?>>CD's</a></li>
                 <li><a href="lotes.php" <?= $pagina_atual === 'lotes.php' ? 'class="ativo"' : '' ?>>Lotes</a></li>
                 <li><a href="perfil.php" <?= $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Perfil</a></li>
