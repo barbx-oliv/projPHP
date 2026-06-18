@@ -16,14 +16,14 @@ PHP 8.x ou superior
 
 ### 1.3 Passo a passo para execução 
 
-# 1. Clone o repositório (ou extraia o arquivo ZIP) dentro da pasta do seu servidor web
+Clone o repositório (ou extraia o arquivo ZIP) dentro da pasta do seu servidor web
 git clone https://github.com/seu-usuario/retromusic.git
 cd retromusic
 
-# Se estiver no Linux/Apache, mova para a pasta pública se necessário:
+Se estiver no Linux/Apache, mova para a pasta pública se necessário:
 # cp -r retromusic/ /var/www/html/
 
-# 2. Crie a pasta de uploads e ajuste as permissões de escrita
+Crie a pasta de uploads e ajuste as permissões de escrita
 mkdir -p uploads && chmod 755 uploads
 
 
@@ -33,14 +33,14 @@ Se você estiver usando o **PostgreSQL**:
 # Cria o banco de dados
 createdb -U postgres retromusic
 
-# Restaura a estrutura e os dados iniciais do arquivo SQL
+Restaura a estrutura e os dados iniciais do arquivo SQL
 psql -U postgres -d retromusic -f sql/retromusic.sql
 
 Agora se você estiver pelo **MySQL**
 # Acesse o terminal do seu MySQL
 mysql -u root -p
 
-# Dentro do prompt do MySQL, execute os comandos:
+Dentro do prompt do MySQL, execute os comandos:
 CREATE DATABASE retromusic;
 USE retromusic;
 SOURCE sql/retromusic.sql;
@@ -50,10 +50,10 @@ EXIT;
 
 ## 7. Como Rodar o Projeto
 
-# Ajuste as credenciais de conexão do banco de dados (Host, Usuário, Senha)
+Ajuste as credenciais de conexão do banco de dados (Host, Usuário, Senha)
 nano config/db.php
 
-# Inicie o servidor embutido do PHP (caso não esteja usando Apache/Nginx)
+Inicie o servidor embutido do PHP (caso não esteja usando Apache/Nginx)
 php -S localhost:8000
 
 
