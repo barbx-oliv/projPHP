@@ -10,7 +10,7 @@ Para rodar e testar localmente, siga o passo a passo abaixo.
 
 ### 1.2 Pré-requisitos 
 PHP 8.x ou superior
-​Um gerenciador de Banco de Dados (PostgreSQL 14+ ou MySQL/MariaDB)
+​Um gerenciador de Banco de Dados (PostgreSQL 14+ ou MySQL)
 ​Um cliente Git instalado (ou o arquivo .zip do projeto)
 ​Servidor Web (Apache/Nginx) ou uso do servidor embutido do PHP
 
