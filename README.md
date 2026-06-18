@@ -5,6 +5,10 @@
 
 ---
 
+## Obsercações 
+No código os botões "ver produto" (de todas as abas dos produtos), "sair" (do perfil) e "editar produto" não estão em funcionamento. Os detalhes dos produtos e a área de editar produto não possuem páginas, sendo assim, eles não funcionam. O botão de "sair" eu preciso revisar o código para encontrar o erro.
+Outra observação importante é na hora de criação do produto... Nele não tem a opção de "lotes" por descuido meu. Sendo assim, não é possível criar um lote para vender
+
 ## 1. Como testar o código 
 Para rodar e testar localmente, siga o passo a passo abaixo.
 
