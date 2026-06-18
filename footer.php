@@ -1,13 +1,13 @@
 <footer class="site-footer">
     <div class="footer-container">
-        <!-- Coluna 1: Logo Oficial e Sobre -->
+        <!-- primeira coluna - Logo Oficial e Sobre -->
         <div class="footer-coluna footer-sobre">
             <a href="index.php" class="footer-logo-block">
                 <img src="img/retroicon.png" alt="RetroMusic Logo" class="footer-logo-img">
             </a>
         </div>
 
-        <!-- Coluna 2: Links Rápidos de Navegação -->
+        <!-- segunda coluna - Links Rápidos de Navegação -->
         <div class="footer-coluna">
             <h3>Navegação</h3>
             <ul class="footer-links">
@@ -19,7 +19,7 @@
             </ul>
         </div>
 
-    <!-- Linha Inferior de Direitos Autorais -->
+    <!-- parte dos direitos autorais -->
     <div class="footer-bottom">
         <div class="footer-container">
             <p>&copy; <?= date('Y') ?> RetroMusic - Todos os direitos reservados.</p>

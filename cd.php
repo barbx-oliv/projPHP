@@ -37,7 +37,6 @@ $generos  = $pdo->query("SELECT DISTINCT genero FROM cds WHERE genero IS NOT NUL
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php ?>
     <?php include "header.php"; ?>
 
     <div class="pagina-listagem">

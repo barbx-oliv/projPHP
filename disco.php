@@ -39,7 +39,6 @@ $generos  = $pdo->query("SELECT DISTINCT genero FROM discos WHERE genero IS NOT 
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php ?>
     <?php include "header.php"; ?>
 
     <div class="pagina-listagem">
@@ -109,7 +108,6 @@ $generos  = $pdo->query("SELECT DISTINCT genero FROM discos WHERE genero IS NOT 
         </div>
     </div>
 
-    <?php // Inclui o rodapé  ?>
     <?php include "footer.php"; ?>
 
     <script>
