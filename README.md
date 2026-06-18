@@ -220,8 +220,8 @@ retromusic/
 **Prioridade:** Alta — **Versão:** 1.0 — **Data:** 2026-05-28
 
 **Critérios de Aceitação:**
-- [] Listagem de todos os anúncios do usuário com status
-- [] Link para edição de cada produto
+- [ ] Listagem de todos os anúncios do usuário com status
+- [ ] Link para edição de cada produto
 - [ ] Ação para pausar/reativar anúncio
 - [ ] Ação para marcar como vendido
 
