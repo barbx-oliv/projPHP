@@ -5,6 +5,15 @@
 
 ---
 
+## Observações 
+Neste código temos os seguintes erros que eu conseguir registrar:
+**Perfil** - no perfil de usuário não é possível editar os produtos e adicionar lotes. O editar seria por que não fiz a página de edição dos produtos e o de lotes seria por um descuido meu na hora de fazer a aba de fazer a página de produtos eu esqueci de adicionar a opção de lote.
+**Sair do perfil** - por algum motivo, está dando erro na hora de sair do perfil. preciso conferir o código para arrumar esse erro.
+**Visualizar informações dos produtos** - mesma situação do primeiro erro de editar. Eu não criei uma página para visualizar as informações dos produtos, por isso não abre
+**Barra de pesquisa** - a barra de pesquisa é outro problema. Quando você pesquisa pelo nome de alguma música, ela não retorna e abre novamente na página inicial. Outro erro que preciso revisar. 
+
+Como dito, esses foram os erros que eu conseguir ver neste código enquanto testava... Pode ocorrer de haver outros que passaram despercebidos. 
+
 ## 1. Como rodar o código 
 Para rodar e testar localmente, siga o passo a passo abaixo.
 
