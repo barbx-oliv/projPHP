@@ -122,7 +122,7 @@ retromusic/
 │   └── style.css         ← Estilos completos
 ├── img/                  ← Imagens do sistema e uploads
 ├── includes/
-│   └── form_produto.php  ← Formulário de anúncio (reutilizável)
+│   └── form_produto.php  ← Formulário de anúncio 
 ├── sql/
 │   └── retromusic.sql    ← Script de criação do banco
 ├── uploads/              ← Imagens enviadas pelos usuários
@@ -131,7 +131,6 @@ retromusic/
 ├── index.php             ← Página inicial com ofertas
 ├── login.php
 ├── cadastro.php
-├── logout.php
 ├── disco.php             ← Listagem de discos de vinil
 ├── cd.php                ← Listagem de CDs
 ├── lotes.php             ← Listagem de lotes
