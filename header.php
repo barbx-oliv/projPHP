@@ -1,7 +1,7 @@
 <?php
 // Garante que a sessão está ativa para verificar o login
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (session_status() === PHP_SESSION_NONE) {  //constante interna -> nenhuma sessão foi iniciada ainda
+    session_start(); 
 }
 
 // Verifica qual é a página atual para aplicar o efeito de aba ativa
@@ -21,7 +21,10 @@ $pagina_atual = basename($_SERVER['PHP_SELF']);
             </div>
             
             <div class="header-usuario">
-                <?php if (isset($_SESSION['usuario_id'])): ?>
+                <!-- Verifica se existe a identificação do usuário na sessão -->
+                 <!-- Se tiver, o php renderiza o bloco do if -->
+                  <!-- Se não, vai pro else, que seria a página de login -->
+                <?php if (isset($_SESSION['usuario_id'])): ?> 
                     <span class="usuario-logado">Olá, <a href="perfil.php"><strong><?= htmlspecialchars($_SESSION['usuario_nome'] ?? 'Colecionador') ?></strong></a></span>
                     <span class="divisor">|</span>
                     <a href="logout.php" class="auth-btn logout">Sair</a>
@@ -37,11 +40,13 @@ $pagina_atual = basename($_SERVER['PHP_SELF']);
     <nav class="header-nav">
         <div class="header-container">
             <ul class="nav-links">
+                <!-- Se a pagina atual foi igual ao arquivo, vai escrever que esta ativo -->
+                <!-- Se não, vai escrever nada -->
                 <li><a href="index.php" <?= $pagina_atual === 'index.php' ? 'class="ativo"' : '' ?>>Inicio</a></li>
                 <li><a href="discos.php" <?= $pagina_atual === 'discos.php' || $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Discos</a></li>
-                <li><a href="lotes.php" <?= $pagina_atual === 'cd.php' ? 'class="ativo"' : '' ?>>CD's</a></li>
-                <li><a href="vitrolas.php" <?= $pagina_atual === 'lotes.php' ? 'class="ativo"' : '' ?>>Lotes</a></li>
-                <li><a href="leilao.php" <?= $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Perfil</a></li>
+                <li><a href="cd.php" <?= $pagina_atual === 'cd.php' ? 'class="ativo"' : '' ?>>CD's</a></li>
+                <li><a href="lotes.php" <?= $pagina_atual === 'lotes.php' ? 'class="ativo"' : '' ?>>Lotes</a></li>
+                <li><a href="perfil.php" <?= $pagina_atual === 'perfil.php' ? 'class="ativo"' : '' ?>>Perfil</a></li>
             </ul>
         </div>
     </nav>

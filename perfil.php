@@ -3,20 +3,28 @@ session_start();
 require_once 'BD/BD.php';
 
 // Redireciona se não estiver logado
-if (!isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION['usuario_id'])) { 
+    // verifica se a váriavel de usuario_id não tá definida
     header('Location: login.php');
-    exit;
+    // se não tiver definida ele vai redirecionar o usuário para a página de login
+    exit; 
 }
 
 $usuario_id = $_SESSION['usuario_id'];
 
 // Aba ativa 
 $aba = $_GET['aba'] ?? 'meus-produtos';
+// se $_GET['aba'] existir e não for nulo, vai usar 
+// se não for, ele vai utilizar o 'meus-produtos' como padrão
 
 // Dados do usuário
 $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id = ?");
-$stmt->execute([$usuario_id]);
+// Em vez de jogar a variável $usuario_id direto na query, é colocado um ?
+// ae o valor real é passado no método abaixo
+$stmt->execute([$usuario_id]); // previne ataques de SQL Injection
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+// traz a linha do BD sobre os usuário em formato de um array associativo
+// exp -> $usuario['nome']
 
 // Atualiza perfil 
 $sucesso = '';
@@ -36,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     }
 }
 
+// UNION ALL -> o php vai enviar uma consulta que vai juntar os resultados da tabela discos com a de cds
+// ae vai pradronizando eles para que possam ser exibidos juntos na mesma tabela HTML
 $query_produtos = "
     SELECT id, nome, preco, ativo, vendido, 'vinil' AS tipo, created_at 
     FROM discos 
@@ -57,7 +67,11 @@ $produtos = $meus_produtos->fetchAll(PDO::FETCH_ASSOC);
 
 // Contagem
 $total_produtos = count($produtos);
+// conta quantos elementos existem no array de produtos
 $total_vendidos = array_reduce($produtos, fn($c, $p) => $c + ($p['vendido'] ? 1 : 0), 0);
+// vai reduzir o array de produtos a um unico valor, sendo o total de vendidos
+// usa uma Arrow Function, utilizada para reduzir a array 
+// Para cada produto ($p) vai verificar se a coluna vendido é verdadeira. Se sim, soma 1 ao acumulador ($c)
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -77,9 +91,13 @@ $total_vendidos = array_reduce($produtos, fn($c, $p) => $c + ($p['vendido'] ? 1 
             <aside class="perfil-card">
                 <div class="avatar">
                     <?= !empty($usuario['nome']) ? mb_strtoupper(mb_substr($usuario['nome'], 0, 1)) : 'U' ?>
+                    <!-- em vez de utilizar o echo, utilizei um atalho para exibir os dados na tela -->
                 </div>
                 <h2><?= htmlspecialchars($usuario['nome'] ?? 'Colecionador') ?></h2>
                 <p class="email"><?= htmlspecialchars($usuario['email'] ?? '') ?></p>
+                <!-- htmlspecialchars -> converte caracteres especiais em entidades HTML-->
+                <!-- exp -> < em $lt; -->
+                <!-- previne ataques de XSS, impedindo a injeção de scripts JavaScript maliciosos -->
 
                 <div class="perfil-stats">
                     <div class="stat">
