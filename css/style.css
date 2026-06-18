@@ -735,9 +735,6 @@ a {
     opacity: 0.85;
 }
 
-/* =========================================================================
-   8. NOVO FOOTER CUSTOMIZADO (RETROMUSIC MODO ESCURO)
-   ========================================================================= */
 .site-footer {
     width: 100%;
     background-color: var(--texto-escuro); /* Mesmo fundo escuro do cabeçalho */
